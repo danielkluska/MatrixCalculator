@@ -23,8 +23,8 @@ class ResultWindow extends JFrame{
         setTitle("Kalkulator macierzy");
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        int width = 50 + 40*columns;
-        int height = 75 + 40*rows;
+        int width = 75 + 40*columns;
+        int height = 100 + 40*rows;
         setBounds(300, 100, width, height);
         button = new JButton("Powrot");
         button.addActionListener(new ButtonListener());

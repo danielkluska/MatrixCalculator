@@ -1,6 +1,6 @@
 class MatrixOperations {
 
-    static Matrix addMatrices(Matrix a, Matrix b) {
+    public static Matrix addMatrices(Matrix a, Matrix b) {
         int columns = a.getColumns();
         int rows = a.getRows();
         Matrix result = new Matrix(columns, rows);
@@ -11,15 +11,60 @@ class MatrixOperations {
                 result.setValue(i, j, valueA+valueB);
             }
         }
-        a.display(); b.display(); result.display();
+        //a.display(); b.display(); result.display();
         return result;
     }
 
-    static Matrix multiplyMatrices(Matrix a, Matrix b) {
-        return new Matrix(0,0);
+    public static Matrix multiplyMatrices(Matrix a, Matrix b) {
+        int columnsA = a.getColumns();
+        int rowsA = a.getRows();
+        int columnsB = b.getColumns();
+        Matrix result = new Matrix(columnsB ,rowsA);
+        for (int i=0; i<columnsB; i++) {
+            for (int j=0; j<rowsA; j++) {
+                float sum = 0;
+                for (int k=0; k<columnsA; k++) {
+                    sum += (a.getValue(k,j) * b.getValue(i, k));
+                }
+                result.setValue(i, j, sum);
+            }
+        }
+        //a.display(); b.display(); result.display();
+        return result;
     }
 
-    static float calculateDeterminant(Matrix a) {
-        return 0;
+    public static Matrix calculateDeterminant(Matrix a) {
+        Matrix result = new Matrix(1,1);
+        if (a.getColumns() == 1)
+            result.setValue(0,0, a.getValue(0,0));
+        else {
+            float sum = 0;
+            for (int i = 0; i<a.getColumns(); i++) {
+                Matrix minor = calculateMinor(a, i, 0);
+                sum += Math.pow(-1, i) * a.getValue(i, 0) * calculateDeterminant(minor).getValue(0,0);
+            }
+            result.setValue(0,0, sum);
+        }
+        return result;
+    }
+
+    private static Matrix calculateMinor(Matrix a, int x, int y) {
+        int size = a.getColumns();
+        Matrix result = new Matrix(size-1, size-1);
+        int column_index = 0;
+        for(int i = 0; i<size; i++) {
+            if (i==x)
+                continue;
+            int row_index = 0;
+            for (int j = 0; j<size; j++) {
+                if(j==y)
+                    continue;
+                result.setValue(column_index, row_index, a.getValue(i,j));
+                row_index++;
+            }
+            column_index++;
+        }
+        result.display();
+        return result;
     }
 }

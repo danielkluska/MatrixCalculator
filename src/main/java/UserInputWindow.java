@@ -107,10 +107,8 @@ class UserInputWindow extends JFrame {
 
     private Matrix performOperation(Matrix a, Mode mode) {
         if(mode == Mode.DETERMINANT) {
-            float f = MatrixOperations.calculateDeterminant(a);
-            Matrix result = new Matrix(1,1);
-            result.setValue(0,0, f);
-            return result;
+            Matrix f = MatrixOperations.calculateDeterminant(a);
+            return f;
         }
         return new Matrix(0,0);
     }
