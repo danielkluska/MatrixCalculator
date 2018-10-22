@@ -32,4 +32,41 @@ class MatrixPanel extends JPanel {
             }
         }
     }
+
+    private boolean validateTextField(int x, int y) {
+        try {
+            float f = Float.parseFloat(matrixFields[x][y].getText());
+            return true;
+        }
+        catch(NumberFormatException e) {
+            matrixFields[x][y].setText("Blad");
+            return false;
+        }
+    }
+
+    public boolean validatePanel() {
+        for (int i=0; i<columns; i++) {
+            for (int j=0; j<rows; j++) {
+                if(!validateTextField(i,j))
+                    return false;
+            }
+        }
+        return true;
+    }
+
+    public float getFieldValue(int x, int y) {
+        return Float.parseFloat(matrixFields[x][y].getText());
+    }
+
+    public void setFieldValue(int x, int y, float value) {
+        matrixFields[x][y].setText(String.valueOf(value));
+    }
+
+    public void disableEditing() {
+        for (int i = 0; i<columns; i++) {
+            for (int j = 0; j<rows; j++) {
+                matrixFields[i][j].setEditable(false);
+            }
+        }
+    }
 }
