@@ -67,4 +67,18 @@ class MatrixOperations {
         result.display();
         return result;
     }
+
+    public static boolean compareMatrices(Matrix a, Matrix b) {
+        a.display();
+        b.display();
+        if(a.getColumns() != b.getColumns() || a.getRows() != b.getRows())
+            return false;
+        for(int i=0; i<a.getColumns(); i++) {
+            for(int j=0; j<a.getRows(); j++) {
+                if(a.getValue(i, j) != b.getValue(i, j))
+                    return false;
+            }
+        }
+        return true;
+    }
 }

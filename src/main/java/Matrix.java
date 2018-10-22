@@ -34,4 +34,22 @@ class Matrix {
     public void setValue(int x, int y, float value) {
         values[x][y] = value;
     }
+
+    public void setValuesFromArray(float[][] array) {
+        for (int i=0; i<columns; i++) {
+            for (int j=0; j<rows; j++) {
+                setValue(i, j, array[i][j]);
+            }
+        }
+    }
+
+    public float[][] getArrayFromValues() {
+        float[][] array = new float[columns][rows];
+        for (int i=0; i<columns; i++) {
+            for (int j=0; j<rows; j++) {
+                array[i][j] = getValue(i, j);
+            }
+        }
+        return array;
+    }
 }
