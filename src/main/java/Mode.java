@@ -1,0 +1,3 @@
+public enum Mode {
+    ADDITION, MULTIPLICATION, DETERMINANT
+}
