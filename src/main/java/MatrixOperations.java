@@ -11,7 +11,6 @@ class MatrixOperations {
                 result.setValue(i, j, valueA+valueB);
             }
         }
-        //a.display(); b.display(); result.display();
         return result;
     }
 
@@ -29,7 +28,6 @@ class MatrixOperations {
                 result.setValue(i, j, sum);
             }
         }
-        //a.display(); b.display(); result.display();
         return result;
     }
 
@@ -64,7 +62,6 @@ class MatrixOperations {
             }
             column_index++;
         }
-        result.display();
         return result;
     }
 

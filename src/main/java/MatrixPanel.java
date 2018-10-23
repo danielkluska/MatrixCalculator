@@ -23,10 +23,11 @@ class MatrixPanel extends JPanel {
         con.gridheight = 1; con.gridwidth = columns;
         con.gridx=0; con.gridy=0; add(new JLabel(title), con);
         con.gridwidth = 1;
+        JTextField textField;
         for(int i=0; i<columns; i++) {
             for(int j=0; j<rows; j++) {
                 con.gridx=i; con.gridy=j+1;
-                JTextField textField = new JTextField("0");
+                textField = new JTextField("0");
                 matrixFields[i][j] = textField;
                 add(textField, con);
             }

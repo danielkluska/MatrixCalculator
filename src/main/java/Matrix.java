@@ -42,14 +42,4 @@ class Matrix {
             }
         }
     }
-
-    public float[][] getArrayFromValues() {
-        float[][] array = new float[columns][rows];
-        for (int i=0; i<columns; i++) {
-            for (int j=0; j<rows; j++) {
-                array[i][j] = getValue(i, j);
-            }
-        }
-        return array;
-    }
 }
